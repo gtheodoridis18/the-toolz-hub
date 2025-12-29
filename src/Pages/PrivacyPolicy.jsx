@@ -7,10 +7,10 @@ export default function PrivacyPolicy() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-16">
         <Helmet>
-          <title>Privacy Policy | the Toolz Hub</title>
+          <title>Privacy Policy | the Toolific Hub</title>
           <meta
             name="description"
-            content="Read the Privacy Policy of the Toolz Hub. Learn how we handle data, cookies, local storage, and user privacy."
+            content="Read the Privacy Policy of the Toolific Hub. Learn how we handle data, cookies, local storage, and user privacy."
           />
         </Helmet>
   
@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
               Introduction
             </h2>
             <p>
-              the Toolz Hub provides free, browser-based utilities that can be
+              the Toolific Hub provides free, browser-based utilities that can be
               used without creating an account or providing personal
               information. Your privacy is important, and this page explains
               how data is handled when you use this website.
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
               Data Collection
             </h2>
             <p>
-              the Toolz Hub does not collect, store, or process personal data.
+              the Toolific Hub does not collect, store, or process personal data.
               There are no user accounts, registrations, or login systems.
               All tools run directly in your browser.
             </p>
@@ -72,12 +72,12 @@ export default function PrivacyPolicy() {
               Cookies & Advertising
             </h2>
             <p>
-              the Toolz Hub may display third-party advertisements, such as
+              the Toolific Hub may display third-party advertisements, such as
               Google AdSense. These advertising providers may use cookies or
               similar technologies to display relevant ads.
             </p>
             <p className="mt-2">
-              the Toolz Hub does not control or have access to these cookies.
+              the Toolific Hub does not control or have access to these cookies.
             </p>
           </section>
 
@@ -87,7 +87,7 @@ export default function PrivacyPolicy() {
               Analytics
             </h2>
             <p>
-              the Toolz Hub does not use custom analytics systems to track
+              the Toolific Hub does not use custom analytics systems to track
               individual users or personal behavior.
             </p>
           </section>

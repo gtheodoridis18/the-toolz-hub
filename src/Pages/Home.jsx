@@ -191,10 +191,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Helmet>
-        <title>Free Online Tools – Calculator, Converter, Timer | the Toolz Hub</title>
+        <title>Free Online Tools – Calculator, Converter, Timer | the Toolific Hub</title>
         <meta
           name="description"
-          content="the Toolz Hub offers free, fast online tools including calculators, unit converters, timers, QR code generators, and more. No signup required."
+          content="the Toolific Hub offers free, fast online tools including calculators, unit converters, timers, QR code generators, and more. No signup required."
         />
       </Helmet>
       {/* Header */}
@@ -210,7 +210,7 @@ export default function Home() {
               Free & Fast Utilities
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-4">
-              the Toolz Hub
+              the Toolific Hub
             </h1>
             <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
               Your essential everyday utilities in one place. 

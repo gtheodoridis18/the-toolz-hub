@@ -7,10 +7,10 @@ export default function Contact() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-16">
         <Helmet>
-          <title>Contact the Toolz Hub</title>
+          <title>Contact the Toolific Hub</title>
           <meta
             name="description"
-            content="Contact the Toolz Hub for questions, feedback, or support related to our free online tools."
+            content="Contact the Toolific Hub for questions, feedback, or support related to our free online tools."
           />
         </Helmet>
 
@@ -43,7 +43,7 @@ export default function Contact() {
               Email
             </h2>
             <p>
-              You can contact the Toolz Hub directly at:
+              You can contact the Toolific Hub directly at:
             </p>
             <p className="mt-2 font-medium text-slate-900">
               contact@thetoolzhub.com
@@ -56,7 +56,7 @@ export default function Contact() {
             </h2>
             <p>
               We aim to respond to legitimate inquiries as soon as possible.
-              Please note that the Toolz Hub does not offer user accounts or
+              Please note that the Toolific Hub does not offer user accounts or
               personalized support.
             </p>
           </section>

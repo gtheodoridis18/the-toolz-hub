@@ -28,7 +28,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
             
             <p className="text-sm text-slate-400">
-              © {new Date().getFullYear()} the Toolz Hub. All rights reserved.
+              © {new Date().getFullYear()} the Toolific Hub. All rights reserved.
             </p>
 
             <div className="flex gap-6 text-sm">

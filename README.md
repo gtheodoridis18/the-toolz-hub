@@ -1,6 +1,6 @@
-# the Toolz Hub
+# the Toolific Hub
 
-the Toolz Hub is a collection of free, browser-based utility tools including calculators, converters, timers, and productivity tools.
+the Toolific Hub is a collection of free, browser-based utility tools including calculators, converters, timers, and productivity tools.
 
 The website does not require user accounts and runs entirely in the browser.
 

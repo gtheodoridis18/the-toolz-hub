@@ -7,10 +7,10 @@ export default function TermsOfService() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-16">
         <Helmet>
-          <title>Terms of Service | the Toolz Hub</title>
+          <title>Terms of Service | the Toolific Hub</title>
           <meta
             name="description"
-            content="Review the Terms of Service for the Toolz Hub. Understand usage rules, limitations, and responsibilities when using our tools."
+            content="Review the Terms of Service for the Toolific Hub. Understand usage rules, limitations, and responsibilities when using our tools."
           />
         </Helmet>
 
@@ -34,7 +34,7 @@ export default function TermsOfService() {
               Acceptance of Terms
             </h2>
             <p>
-              By accessing or using the Toolz Hub, you agree to be bound by
+              By accessing or using the Toolific Hub, you agree to be bound by
               these Terms of Service. If you do not agree, please do not use
               this website.
             </p>
@@ -45,7 +45,7 @@ export default function TermsOfService() {
               Use of the Website
             </h2>
             <p>
-              the Toolz Hub provides free, browser-based utilities for general
+              the Toolific Hub provides free, browser-based utilities for general
               informational and personal use only. All tools operate entirely
               on the client side.
             </p>
@@ -57,7 +57,7 @@ export default function TermsOfService() {
             </h2>
             <p>
               The tools are provided “as is” without warranties of any kind.
-              the Toolz Hub does not guarantee accuracy, completeness, or
+              the Toolific Hub does not guarantee accuracy, completeness, or
               suitability of any results generated.
             </p>
           </section>
@@ -67,7 +67,7 @@ export default function TermsOfService() {
               Limitation of Liability
             </h2>
             <p>
-              the Toolz Hub shall not be held liable for any direct, indirect,
+              the Toolific Hub shall not be held liable for any direct, indirect,
               incidental, or consequential damages arising from the use or
               inability to use this website or its tools.
             </p>
@@ -88,7 +88,7 @@ export default function TermsOfService() {
               Modifications
             </h2>
             <p>
-              the Toolz Hub may update or modify these Terms at any time.
+              the Toolific Hub may update or modify these Terms at any time.
               Continued use of the website constitutes acceptance of the
               updated Terms.
             </p>
