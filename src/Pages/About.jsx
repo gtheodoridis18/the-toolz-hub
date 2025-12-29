@@ -81,7 +81,7 @@ export default function About() {
               For questions, feedback, or suggestions, you can reach us at:
             </p>
             <p className="mt-2 font-medium text-slate-900">
-              contact@thetoolzhub.com
+              contact@thetoolifichub.com
             </p>
           </section>
 

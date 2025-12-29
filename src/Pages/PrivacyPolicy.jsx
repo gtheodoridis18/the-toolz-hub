@@ -125,7 +125,7 @@ export default function PrivacyPolicy() {
               contact us at:
             </p>
             <p className="mt-2 font-medium text-slate-900">
-              contact@thetoolzhub.com
+              contact@thetoolifichub.com
             </p>
           </section>
         </div>
