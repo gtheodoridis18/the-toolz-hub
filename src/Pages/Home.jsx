@@ -216,9 +216,6 @@ export default function Home() {
               Your essential everyday utilities in one place. 
               No sign-up required. Fast, simple, and always free.
             </p>
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              the Toolz Hub offers fast, free, browser-based utilities to help users complete everyday tasks without accounts or downloads.
-            </p>
           </motion.div>
         </div>
       </header>
