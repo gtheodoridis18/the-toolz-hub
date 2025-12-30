@@ -21,6 +21,7 @@ export default function ToolAccordion({
     >
       <button
         onClick={onToggle}
+        aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${title} tool`}
         className="w-full px-4 py-5 md:p-6 flex items-center gap-4 text-left"
       >
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${gradient} shrink-0`}>

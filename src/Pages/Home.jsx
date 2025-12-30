@@ -283,6 +283,7 @@ export default function Home() {
                               e.stopPropagation();
                               toggleFavorite(tool.id);
                             }}
+                            aria-label={`Remove ${tool.title} from favorites`}
                             className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
                           >
                             <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
@@ -330,6 +331,7 @@ export default function Home() {
                             e.stopPropagation();
                             toggleFavorite(tool.id);
                           }}
+                          aria-label={`Add ${tool.title} to favorites`}
                           className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
                         >
                           <Star className="w-5 h-5 text-slate-300 hover:text-amber-400" />
