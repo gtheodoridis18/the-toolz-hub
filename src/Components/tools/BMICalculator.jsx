@@ -27,7 +27,6 @@ export default function BMICalculator() {
     }
 
     if (heightInMeters <= 0 || weightInKg <= 0) return setBmi(null);
-
     setBmi(weightInKg / (heightInMeters * heightInMeters));
   };
 
@@ -42,17 +41,23 @@ export default function BMICalculator() {
     return { label: 'Obese', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200' };
   };
 
+  const getPointerPosition = (bmi) => {
+    if (bmi < 15) return 0;
+    if (bmi > 40) return 100;
+    return ((bmi - 15) / 25) * 100;
+  };
+
   const category = bmi ? getBMICategory(bmi) : null;
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-md mx-auto space-y-6">
       {/* Unit Toggle */}
-      <div className="flex mb-6 bg-slate-100 p-1 rounded-xl">
+      <div className="flex bg-slate-100 p-1 rounded-xl">
         {['metric', 'imperial'].map((u) => (
           <button
             key={u}
             onClick={() => setUnit(u)}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition ${
+            className={`flex-1 py-2 text-sm font-medium rounded-lg transition ${
               unit === u ? 'bg-white shadow' : 'hover:bg-slate-200'
             }`}
           >
@@ -62,9 +67,9 @@ export default function BMICalculator() {
       </div>
 
       {/* Inputs */}
-      <div className="space-y-4 mb-6">
+      <div className="space-y-4">
         <div className="bg-slate-50 rounded-2xl p-4">
-          <label className="text-sm font-medium text-slate-600 mb-2 flex items-center gap-2">
+          <label className="flex items-center gap-2 text-sm font-medium text-slate-600 mb-2">
             <Ruler className="w-4 h-4" /> Height
           </label>
 
@@ -74,7 +79,7 @@ export default function BMICalculator() {
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="h-12 w-full pr-12 text-lg rounded-xl border border-slate-200"
+                className="h-12 w-full px-4 pr-14 text-lg rounded-xl border border-slate-200"
                 placeholder="170"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
@@ -83,36 +88,26 @@ export default function BMICalculator() {
             </div>
           ) : (
             <div className="flex gap-3">
-              <div className="relative flex-1">
-                <input
-                  type="number"
-                  value={heightFeet}
-                  onChange={(e) => setHeightFeet(e.target.value)}
-                  className="h-12 w-full pr-8 text-lg rounded-xl border border-slate-200"
-                  placeholder="5"
-                />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                  ft
-                </span>
-              </div>
-              <div className="relative flex-1">
-                <input
-                  type="number"
-                  value={heightInches}
-                  onChange={(e) => setHeightInches(e.target.value)}
-                  className="h-12 w-full pr-8 text-lg rounded-xl border border-slate-200"
-                  placeholder="10"
-                />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                  in
-                </span>
-              </div>
+              <input
+                type="number"
+                value={heightFeet}
+                onChange={(e) => setHeightFeet(e.target.value)}
+                className="h-12 w-full px-4 pr-10 text-lg rounded-xl border border-slate-200"
+                placeholder="5"
+              />
+              <input
+                type="number"
+                value={heightInches}
+                onChange={(e) => setHeightInches(e.target.value)}
+                className="h-12 w-full px-4 pr-10 text-lg rounded-xl border border-slate-200"
+                placeholder="10"
+              />
             </div>
           )}
         </div>
 
         <div className="bg-slate-50 rounded-2xl p-4">
-          <label className="text-sm font-medium text-slate-600 mb-2 flex items-center gap-2">
+          <label className="flex items-center gap-2 text-sm font-medium text-slate-600 mb-2">
             <Scale className="w-4 h-4" /> Weight
           </label>
           <div className="relative">
@@ -120,7 +115,7 @@ export default function BMICalculator() {
               type="number"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              className="h-12 w-full pr-12 text-lg rounded-xl border border-slate-200"
+              className="h-12 w-full px-4 pr-14 text-lg rounded-xl border border-slate-200"
               placeholder={unit === 'metric' ? '70' : '154'}
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
@@ -137,20 +132,62 @@ export default function BMICalculator() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className={`${category.bg} ${category.border} border rounded-2xl p-6 text-center`}
+            className="space-y-4"
           >
-            <p className="text-slate-500 text-sm uppercase tracking-wide mb-2">
-              Your BMI
-            </p>
-            <p className={`text-5xl font-light ${category.color}`}>
-              {bmi.toFixed(1)}
-            </p>
-            <p className={`text-lg font-medium ${category.color} mt-2`}>
-              {category.label}
-            </p>
+            <div className={`${category.bg} ${category.border} border rounded-2xl p-6 text-center`}>
+              <p className="text-slate-500 text-sm uppercase tracking-wide mb-2">
+                Your BMI
+              </p>
+              <p className={`text-5xl font-light ${category.color}`}>
+                {bmi.toFixed(1)}
+              </p>
+              <p className={`text-lg font-medium ${category.color} mt-2`}>
+                {category.label}
+              </p>
+            </div>
+
+            {/* Scale */}
+            <div className="bg-white rounded-2xl p-4 border border-slate-200">
+              <div className="relative h-8 mb-2">
+                <div className="absolute inset-0 flex rounded-full overflow-hidden">
+                  <div className="bg-blue-400 flex-1" />
+                  <div className="bg-green-400 flex-1" />
+                  <div className="bg-amber-400 flex-1" />
+                  <div className="bg-red-400 flex-1" />
+                </div>
+                <motion.div
+                  className="absolute top-0 w-1 h-8 bg-slate-900 rounded-full"
+                  animate={{ left: `${getPointerPosition(bmi)}%` }}
+                  style={{ transform: 'translateX(-50%)' }}
+                />
+              </div>
+              <div className="flex justify-between text-xs text-slate-500">
+                <span>15</span>
+                <span>18.5</span>
+                <span>25</span>
+                <span>30</span>
+                <span>40</span>
+              </div>
+            </div>
+
+            {/* Legend */}
+            <div className="grid grid-cols-4 gap-2 text-center text-xs">
+              {[
+                ['Under', 'bg-blue-50', 'bg-blue-400'],
+                ['Normal', 'bg-green-50', 'bg-green-400'],
+                ['Over', 'bg-amber-50', 'bg-amber-400'],
+                ['Obese', 'bg-red-50', 'bg-red-400'],
+              ].map(([label, bg, dot]) => (
+                <div key={label} className={`${bg} rounded-lg p-2`}>
+                  <div className={`w-2 h-2 ${dot} rounded-full mx-auto mb-1`} />
+                  <span className="text-slate-600">{label}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
 }
+
