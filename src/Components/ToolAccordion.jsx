@@ -28,7 +28,7 @@ export default function ToolAccordion({
           <Icon className="w-6 h-6 text-white" />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
+          <h2 className="font-semibold text-slate-900 text-lg">{title}</h2>
           <p className="text-sm text-slate-500 mt-0.5 break-words">
             {description}
           </p>
