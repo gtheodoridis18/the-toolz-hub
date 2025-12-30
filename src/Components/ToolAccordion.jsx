@@ -15,7 +15,7 @@ export default function ToolAccordion({
   return (
     <motion.div
       layout
-      className={`bg-white rounded-2xl border transition-all duration-300 ${
+      className={`w-full max-w-full bg-white rounded-2xl border transition-all duration-300 ${
         isOpen ? 'border-teal-200 shadow-lg shadow-teal-500/5' : 'border-slate-200 hover:border-slate-300 hover:shadow-md'
       }`}
     >
@@ -28,9 +28,11 @@ export default function ToolAccordion({
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
-          <p className="text-sm text-slate-500 mt-0.5 truncate">{description}</p>
+          <p className="text-sm text-slate-500 mt-0.5 break-words">
+            {description}
+          </p>
         </div>
-        <div className="flex items-center gap-2 shrink-0 max-w-full">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.2 }}
