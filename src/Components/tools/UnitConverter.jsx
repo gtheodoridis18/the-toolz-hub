@@ -1,31 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import { ArrowRightLeft } from 'lucide-react';
-
-function Button({ children, className = '', ...props }) {
-  return (
-    <button
-      {...props}
-      className={`flex items-center justify-center ${className}`}
-    >
-      {children}
-    </button>
-  );
-}
-
-function Input({ className = '', ...props }) {
-  return (
-    <input
-      {...props}
-      className={`border bg-white px-3 ${className}`}
-    />
-  );
-}
-
 
 const conversions = {
   length: {
-    units: ['Meters', 'Kilometers', 'Centimeters', 'Millimeters', 'Micrometers', 'Nanometers', 'Miles', 'Yards', 'Feet', 'Inches', 'Nautical Miles', 'Light Years'],
+    units: [
+      'Meters','Kilometers','Centimeters','Millimeters','Micrometers',
+      'Nanometers','Miles','Yards','Feet','Inches','Nautical Miles','Light Years'
+    ],
     toBase: {
       Meters: 1,
       Kilometers: 1000,
@@ -42,7 +23,7 @@ const conversions = {
     }
   },
   weight: {
-    units: ['Kilograms', 'Grams', 'Milligrams', 'Micrograms', 'Metric Tons', 'Pounds', 'Ounces', 'Tons (US)', 'Tons (UK)', 'Stone', 'Carats'],
+    units: ['Kilograms','Grams','Milligrams','Micrograms','Metric Tons','Pounds','Ounces','Tons (US)','Tons (UK)','Stone','Carats'],
     toBase: {
       Kilograms: 1,
       Grams: 0.001,
@@ -58,23 +39,23 @@ const conversions = {
     }
   },
   temperature: {
-    units: ['Celsius', 'Fahrenheit', 'Kelvin', 'Rankine'],
+    units: ['Celsius','Fahrenheit','Kelvin','Rankine'],
     special: true
   },
   speed: {
-    units: ['Meters/Second', 'Kilometers/Hour', 'Miles/Hour', 'Feet/Second', 'Knots', 'Mach', 'Speed of Light'],
+    units: ['Meters/Second','Kilometers/Hour','Miles/Hour','Feet/Second','Knots','Mach','Speed of Light'],
     toBase: {
       'Meters/Second': 1,
       'Kilometers/Hour': 0.277778,
       'Miles/Hour': 0.44704,
       'Feet/Second': 0.3048,
-      'Knots': 0.514444,
-      'Mach': 343,
+      Knots: 0.514444,
+      Mach: 343,
       'Speed of Light': 299792458,
     }
   },
   volume: {
-    units: ['Liters', 'Milliliters', 'Cubic Meters', 'Cubic Centimeters', 'Gallons (US)', 'Gallons (UK)', 'Quarts (US)', 'Pints (US)', 'Cups (US)', 'Fluid Ounces (US)', 'Tablespoons', 'Teaspoons'],
+    units: ['Liters','Milliliters','Cubic Meters','Cubic Centimeters','Gallons (US)','Gallons (UK)','Quarts (US)','Pints (US)','Cups (US)','Fluid Ounces (US)','Tablespoons','Teaspoons'],
     toBase: {
       Liters: 1,
       Milliliters: 0.001,
@@ -86,12 +67,12 @@ const conversions = {
       'Pints (US)': 0.473176,
       'Cups (US)': 0.236588,
       'Fluid Ounces (US)': 0.0295735,
-      'Tablespoons': 0.0147868,
-      'Teaspoons': 0.00492892,
+      Tablespoons: 0.0147868,
+      Teaspoons: 0.00492892,
     }
   },
   pressure: {
-    units: ['Pascal', 'Kilopascal', 'Bar', 'PSI', 'Atmosphere', 'Torr', 'mmHg'],
+    units: ['Pascal','Kilopascal','Bar','PSI','Atmosphere','Torr','mmHg'],
     toBase: {
       Pascal: 1,
       Kilopascal: 1000,
@@ -103,7 +84,7 @@ const conversions = {
     }
   },
   area: {
-    units: ['Square Meters', 'Square Kilometers', 'Square Centimeters', 'Square Feet', 'Square Yards', 'Square Miles', 'Acres', 'Hectares'],
+    units: ['Square Meters','Square Kilometers','Square Centimeters','Square Feet','Square Yards','Square Miles','Acres','Hectares'],
     toBase: {
       'Square Meters': 1,
       'Square Kilometers': 1000000,
@@ -116,7 +97,7 @@ const conversions = {
     }
   },
   data: {
-    units: ['Bytes', 'Kilobytes', 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes', 'Bits', 'Kilobits', 'Megabits', 'Gigabits'],
+    units: ['Bytes','Kilobytes','Megabytes','Gigabytes','Terabytes','Petabytes','Bits','Kilobits','Megabits','Gigabits'],
     toBase: {
       Bytes: 1,
       Kilobytes: 1024,
@@ -131,7 +112,7 @@ const conversions = {
     }
   },
   time: {
-    units: ['Seconds', 'Minutes', 'Hours', 'Days', 'Weeks', 'Months', 'Years', 'Decades', 'Centuries'],
+    units: ['Seconds','Minutes','Hours','Days','Weeks','Months','Years','Decades','Centuries'],
     toBase: {
       Seconds: 1,
       Minutes: 60,
@@ -145,7 +126,7 @@ const conversions = {
     }
   },
   energy: {
-    units: ['Joules', 'Kilojoules', 'Calories', 'Kilocalories', 'Watt-Hours', 'Kilowatt-Hours', 'Electronvolts', 'BTU'],
+    units: ['Joules','Kilojoules','Calories','Kilocalories','Watt-Hours','Kilowatt-Hours','Electronvolts','BTU'],
     toBase: {
       Joules: 1,
       Kilojoules: 1000,
@@ -173,14 +154,12 @@ export default function UnitConverter() {
     if (cat === 'temperature') {
       let celsius;
       switch (from) {
-        case 'Celsius': celsius = num; break;
         case 'Fahrenheit': celsius = (num - 32) * 5/9; break;
         case 'Kelvin': celsius = num - 273.15; break;
         case 'Rankine': celsius = (num - 491.67) * 5/9; break;
         default: celsius = num;
       }
       switch (to) {
-        case 'Celsius': return celsius.toFixed(4);
         case 'Fahrenheit': return ((celsius * 9/5) + 32).toFixed(4);
         case 'Kelvin': return (celsius + 273.15).toFixed(4);
         case 'Rankine': return ((celsius + 273.15) * 9/5).toFixed(4);
@@ -188,9 +167,8 @@ export default function UnitConverter() {
       }
     }
 
-    const baseValue = num * conversions[cat].toBase[from];
-    const result = baseValue / conversions[cat].toBase[to];
-    return result.toFixed(6).replace(/\.?0+$/, '');
+    const base = num * conversions[cat].toBase[from];
+    return (base / conversions[cat].toBase[to]).toFixed(6).replace(/\.?0+$/, '');
   };
 
   useEffect(() => {
@@ -211,61 +189,49 @@ export default function UnitConverter() {
   };
 
   return (
-  <div className="max-w-2xl mx-auto">
+    <div className="w-full max-w-xl mx-auto">
 
-    {/* Category Selector (replaces Tabs) */}
-    <div className="flex flex-wrap gap-2 mb-6">
-      {Object.keys(conversions).map((cat) => (
-        <button
-          key={cat}
-          onClick={() => setCategory(cat)}
-          className={`px-3 py-2 rounded-lg text-sm font-medium transition
-            ${category === cat
-              ? 'bg-white shadow border border-slate-200'
-              : 'bg-slate-100 hover:bg-slate-200'
-            }`}
-        >
-          {cat.charAt(0).toUpperCase() + cat.slice(1)}
-        </button>
-      ))}
-    </div>
-
-    {/* Converter UI */}
-    <div className="space-y-4">
+      {/* Categories */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {Object.keys(conversions).map(cat => (
+          <button
+            key={cat}
+            onClick={() => setCategory(cat)}
+            className={`px-3 py-2 rounded-lg text-sm font-medium transition
+              ${category === cat ? 'bg-white shadow border' : 'bg-slate-100 hover:bg-slate-200'}`}
+          >
+            {cat.charAt(0).toUpperCase() + cat.slice(1)}
+          </button>
+        ))}
+      </div>
 
       {/* FROM */}
-      <div className="bg-slate-50 rounded-2xl p-4">
-        <label className="text-xs font-medium text-slate-500 uppercase mb-2 block">
-          From
-        </label>
-
-        <div className="flex gap-3">
+      <div className="bg-slate-50 rounded-2xl p-4 mb-4">
+        <label className="text-xs font-medium text-slate-500 uppercase mb-2 block">From</label>
+        <div className="flex flex-col sm:flex-row gap-3">
           <input
             type="number"
             value={fromValue}
-            onChange={(e) => setFromValue(e.target.value)}
-            className="flex-1 h-12 text-lg font-medium border border-slate-200 rounded-xl px-3"
+            onChange={e => setFromValue(e.target.value)}
+            className="w-full h-12 px-4 text-lg font-medium border border-slate-200 rounded-xl"
           />
-
           <select
             value={fromUnit}
-            onChange={(e) => setFromUnit(e.target.value)}
-            className="w-36 h-12 rounded-xl border border-slate-200 bg-white px-3"
+            onChange={e => setFromUnit(e.target.value)}
+            className="w-full sm:w-36 h-12 px-3 rounded-xl border border-slate-200 bg-white"
           >
-            {conversions[category].units.map((unit) => (
-              <option key={unit} value={unit}>
-                {unit}
-              </option>
+            {conversions[category].units.map(u => (
+              <option key={u}>{u}</option>
             ))}
           </select>
         </div>
       </div>
 
-      {/* SWAP */}
-      <div className="flex justify-center">
+      {/* Swap */}
+      <div className="flex justify-center mb-4">
         <button
           onClick={swap}
-          className="rounded-full h-10 w-10 border border-slate-200 hover:bg-teal-50 hover:border-teal-200 flex items-center justify-center"
+          className="h-10 w-10 rounded-full border border-slate-200 hover:bg-teal-50 flex items-center justify-center"
         >
           <ArrowRightLeft className="w-4 h-4 text-teal-600" />
         </button>
@@ -273,31 +239,25 @@ export default function UnitConverter() {
 
       {/* TO */}
       <div className="bg-teal-50 rounded-2xl p-4 border border-teal-100">
-        <label className="text-xs font-medium text-teal-700 uppercase mb-2 block">
-          To
-        </label>
-
-        <div className="flex gap-3">
-          <div className="flex-1 h-12 bg-white rounded-xl flex items-center px-4 text-lg font-medium border border-teal-200">
+        <label className="text-xs font-medium text-teal-700 uppercase mb-2 block">To</label>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div className="w-full h-12 bg-white px-4 flex items-center text-lg font-medium border border-teal-200 rounded-xl">
             {toValue || '0'}
           </div>
-
           <select
             value={toUnit}
-            onChange={(e) => setToUnit(e.target.value)}
-            className="w-36 h-12 rounded-xl border border-teal-200 bg-white px-3"
+            onChange={e => setToUnit(e.target.value)}
+            className="w-full sm:w-36 h-12 px-3 rounded-xl border border-teal-200 bg-white"
           >
-            {conversions[category].units.map((unit) => (
-              <option key={unit} value={unit}>
-                {unit}
-              </option>
+            {conversions[category].units.map(u => (
+              <option key={u}>{u}</option>
             ))}
           </select>
         </div>
       </div>
 
     </div>
-  </div>
-);
+  );
 }
+
 

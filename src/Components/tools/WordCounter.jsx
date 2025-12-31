@@ -68,7 +68,7 @@ export default function WordCounter() {
           className="min-h-[200px] w-full text-base leading-relaxed resize-none rounded-2xl border border-slate-200 p-4 focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
         />
         <div className="absolute bottom-3 right-3 text-xs text-slate-400">
-          {stats.characters} / ∞
+          {stats.characters}
         </div>
       </div>
 

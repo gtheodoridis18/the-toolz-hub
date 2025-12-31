@@ -246,8 +246,8 @@ export default function Home() {
             <AdPlaceholder variant="sidebar" />
           </aside>
 
-          <main className="flex-1 max-w-4xl mx-auto">
-            <div className="space-y-4">
+          <main className="flex-1 max-w-4xl mx-auto w-full">
+            <div className="space-y-4 w-full max-w-full overflow-x-hidden">
               {filteredTools.length === 0 && (
                 <div className="text-center py-12">
                   <p className="text-slate-400 text-lg">

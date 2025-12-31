@@ -14,11 +14,15 @@ export default function ToolAccordion({
 }) {
   return (
     <motion.div
-      layout
-      className={`w-full max-w-full bg-white rounded-2xl border transition-all duration-300 ${
-        isOpen ? 'border-teal-200 shadow-lg shadow-teal-500/5' : 'border-slate-200 hover:border-slate-300 hover:shadow-md'
-      }`}
+      layout="position"
+      layoutScroll
+      className={`w-full max-w-full bg-white rounded-2xl border transition-colors duration-300 overflow-hidden ${
+        isOpen
+          ? 'border-teal-200 shadow-lg shadow-teal-500/5'
+          : 'border-slate-200 hover:border-slate-300 hover:shadow-md'
+    }`}
     >
+
       <button
         onClick={onToggle}
         aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${title} tool`}
@@ -27,18 +31,24 @@ export default function ToolAccordion({
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${gradient} shrink-0`}>
           <Icon className="w-6 h-6 text-white" />
         </div>
+
         <div className="flex-1 min-w-0">
           <h2 className="font-semibold text-slate-900 text-lg">{title}</h2>
           <p className="text-sm text-slate-500 mt-0.5 break-words">
             {description}
           </p>
         </div>
+
         <div className="flex items-center gap-2 flex-shrink-0">
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ChevronDown className={`w-5 h-5 ${isOpen ? 'text-teal-600' : 'text-slate-400'}`} />
+            <ChevronDown
+              className={`w-5 h-5 ${
+                isOpen ? 'text-teal-600' : 'text-slate-400'
+              }`}
+            />
           </motion.div>
           {rightElement}
         </div>
@@ -51,9 +61,9 @@ export default function ToolAccordion({
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
+            className="overflow-hidden w-full max-w-full"
           >
-            <div className="px-5 pb-6 md:px-6 md:pb-8 pt-2 border-t border-slate-100">
+            <div className="px-4 pb-6 md:px-6 md:pb-8 pt-2 border-t border-slate-100 w-full max-w-full">
               {children}
             </div>
           </motion.div>
