@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRightLeft } from 'lucide-react';
-import { Select } from '../../components/ui/select';
+import { Select } from '../../Components/ui/Select';
 
 const conversions = {
   length: {
