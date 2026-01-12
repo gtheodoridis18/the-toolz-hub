@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRightLeft, RefreshCw } from 'lucide-react';
-import { Select } from '../../Components/ui/Select';
+import { Select } from '../ui/Select';
 
 const currencies = [
   { code: 'USD', name: 'US Dollar', symbol: '$', flag: '🇺🇸' },

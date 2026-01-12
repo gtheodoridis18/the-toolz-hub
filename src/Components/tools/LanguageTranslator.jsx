@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Languages, Loader } from 'lucide-react';
-import { Select } from '../ui/select';
+import { Select } from '../ui/Select';
 
 export default function LanguageTranslator() {
   const [text, setText] = useState('');

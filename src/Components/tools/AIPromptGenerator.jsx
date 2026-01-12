@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Copy } from 'lucide-react';
-import { Select } from '../../Components/ui/Select';
+import { Select } from '../ui/Select';
 
 export default function AIPromptGenerator() {
   const [taskType, setTaskType] = useState('writing');

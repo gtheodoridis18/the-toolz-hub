@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Clock } from 'lucide-react';
-import SearchableSelect from '../../components/ui/searchable-select';
+import SearchableSelect from '../ui/searchable-select';
 
 /* ---------- ALL TIME ZONES ---------- */
 const ALL_TIME_ZONES = Intl.supportedValuesOf('timeZone');
