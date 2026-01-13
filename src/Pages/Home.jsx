@@ -252,7 +252,15 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-12"><AdPlaceholder variant="horizontal" /></div>
+            <div className="mt-12">
+              {/* Bottom ad - square on mobile, horizontal on desktop */}
+              <div className="block sm:hidden">
+                <AdPlaceholder variant="square" />
+              </div>
+              <div className="hidden sm:block">
+                <AdPlaceholder variant="horizontal" />
+              </div>
+            </div>
           </main>
 
           <aside className="hidden xl:block sticky top-4 shrink-0 w-[300px]">
