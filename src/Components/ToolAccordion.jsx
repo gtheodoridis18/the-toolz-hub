@@ -30,15 +30,28 @@ export default function ToolAccordion({
         aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${title} tool`}
         className="w-full px-4 py-5 md:p-6 flex items-center gap-4 text-left"
       >
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${gradient} shrink-0`}>
-          <Icon className="w-6 h-6 text-white" />
+        {/* Icon with optional tooltip badge */}
+        <div className="relative shrink-0">
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${gradient}`}>
+            <Icon className="w-6 h-6 text-white" />
+          </div>
+          {/* Mobile: Small badge on icon bottom-right */}
+          {helpText && (
+            <div 
+              onClick={(e) => e.stopPropagation()} 
+              className="absolute -bottom-1 -right-1 md:hidden bg-white rounded-full shadow-md border border-slate-200"
+            >
+              <InfoTooltip content={helpText} />
+            </div>
+          )}
         </div>
 
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 pr-2">
           <div className="flex items-center gap-1.5">
-            <h2 className="font-semibold text-slate-900 text-base sm:text-lg flex-shrink-0">{title}</h2>
+            <h2 className="font-semibold text-slate-900 text-base sm:text-lg">{title}</h2>
+            {/* Desktop: Next to title */}
             {helpText && (
-              <div onClick={(e) => e.stopPropagation()} className="inline-flex flex-shrink-0">
+              <div onClick={(e) => e.stopPropagation()} className="hidden md:inline-flex flex-shrink-0">
                 <InfoTooltip content={helpText} />
               </div>
             )}

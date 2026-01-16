@@ -98,11 +98,33 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [favorites, setFavorites] = useState([]);
+  const categoryScrollRef = React.useRef(null);
 
   useEffect(() => {
     const savedFavorites = localStorage.getItem('favoriteTools');
     if (savedFavorites) setFavorites(JSON.parse(savedFavorites));
   }, []);
+
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId);
+    
+    // Instant scroll to center - no delay
+    requestAnimationFrame(() => {
+      if (categoryScrollRef.current) {
+        const container = categoryScrollRef.current;
+        const button = container.querySelector(`[data-category="${categoryId}"]`);
+        
+        if (button) {
+          const containerWidth = container.offsetWidth;
+          const buttonLeft = button.offsetLeft;
+          const buttonWidth = button.offsetWidth;
+          const scrollPosition = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
+          
+          container.scrollLeft = scrollPosition; // Direct assignment - instant!
+        }
+      }
+    });
+  };
 
   const handleToggle = (id) => setOpenTool(openTool === id ? null : id);
 
@@ -149,15 +171,20 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-6">
-        <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex justify-start md:justify-center gap-2 px-4 snap-x snap-mandatory">
-            {CATEGORIES.map(cat => (
-              <button key={cat.id} onClick={() => setSelectedCategory(cat.id)} className={`px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap text-sm flex-shrink-0 snap-start ${selectedCategory === cat.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white border border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-slate-50'}`}>
-                {cat.name}
-              </button>
-            ))}
-          </div>
+      <div className="mb-6 overflow-x-auto scrollbar-hide" ref={categoryScrollRef}>
+        <div className="flex justify-start md:justify-center gap-2 px-4 snap-x snap-mandatory min-w-max">
+          {CATEGORIES.map((cat, index) => (
+            <button 
+              key={cat.id} 
+              data-category={cat.id}
+              onClick={() => handleCategoryClick(cat.id)} 
+              className={`px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap text-sm flex-shrink-0 snap-start ${
+                selectedCategory === cat.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white border border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-slate-50'
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
         </div>
       </div>
 
