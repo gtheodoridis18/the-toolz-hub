@@ -149,13 +149,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 mb-6">
-        <div className="relative">
-          {/* Fade overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-          
-          <div className="flex justify-start md:justify-center gap-2 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+      <div className="mb-6">
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex justify-start md:justify-center gap-2 px-4 snap-x snap-mandatory">
             {CATEGORIES.map(cat => (
               <button key={cat.id} onClick={() => setSelectedCategory(cat.id)} className={`px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap text-sm flex-shrink-0 snap-start ${selectedCategory === cat.id ? 'bg-teal-600 text-white shadow-md' : 'bg-white border border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-slate-50'}`}>
                 {cat.name}

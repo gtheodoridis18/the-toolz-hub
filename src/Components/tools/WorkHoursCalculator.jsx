@@ -64,39 +64,35 @@ export default function WorkHoursCalculator() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-slate-50 rounded-2xl p-4"
           >
-            <div className="space-y-3">
-              <div className="grid grid-cols-1 gap-3">
-                <div>
-                  <label className="text-xs text-slate-600 mb-1.5 block font-medium">Date</label>
-                  <input
-                    type="date"
-                    value={entry.date}
-                    onChange={(e) => updateEntry(entry.id, 'date', e.target.value)}
-                    className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
-                  />
-                </div>
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs text-slate-600 mb-1.5 block font-medium">Date</label>
+                <input
+                  type="date"
+                  value={entry.date}
+                  onChange={(e) => updateEntry(entry.id, 'date', e.target.value)}
+                  className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
+                />
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs text-slate-600 mb-1.5 block font-medium">Time In</label>
-                  <input
-                    type="time"
-                    value={entry.timeIn}
-                    onChange={(e) => updateEntry(entry.id, 'timeIn', e.target.value)}
-                    className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
-                  />
-                </div>
-                
-                <div>
-                  <label className="text-xs text-slate-600 mb-1.5 block font-medium">Time Out</label>
-                  <input
-                    type="time"
-                    value={entry.timeOut}
-                    onChange={(e) => updateEntry(entry.id, 'timeOut', e.target.value)}
-                    className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
-                  />
-                </div>
+              <div>
+                <label className="text-xs text-slate-600 mb-1.5 block font-medium">Time In</label>
+                <input
+                  type="time"
+                  value={entry.timeIn}
+                  onChange={(e) => updateEntry(entry.id, 'timeIn', e.target.value)}
+                  className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
+                />
+              </div>
+              
+              <div>
+                <label className="text-xs text-slate-600 mb-1.5 block font-medium">Time Out</label>
+                <input
+                  type="time"
+                  value={entry.timeOut}
+                  onChange={(e) => updateEntry(entry.id, 'timeOut', e.target.value)}
+                  className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
+                />
               </div>
               
               <div className="grid grid-cols-2 gap-4">

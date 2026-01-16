@@ -80,7 +80,7 @@ export default function HabitTracker() {
             onChange={(e) => setNewHabit(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && addHabit()}
             placeholder="Add a new habit..."
-            className="w-full h-20 px-5 rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors text-base"
+            className="w-full h-14 px-5 rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors text-base"
           />
           <button
             onClick={addHabit}
