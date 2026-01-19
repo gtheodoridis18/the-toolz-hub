@@ -64,14 +64,14 @@ export default function WorkHoursCalculator() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-slate-50 rounded-2xl p-4 overflow-hidden"
           >
-            <div className="space-y-4 w-full">
+            <div className="space-y-4 w-full max-w-full">
               <div className="w-full">
                 <label className="text-xs text-slate-600 mb-1.5 block font-medium">Date</label>
                 <input
                   type="date"
                   value={entry.date}
                   onChange={(e) => updateEntry(entry.id, 'date', e.target.value)}
-                  className="w-full max-w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
+                  className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white box-border"
                 />
               </div>
               
@@ -81,7 +81,7 @@ export default function WorkHoursCalculator() {
                   type="time"
                   value={entry.timeIn}
                   onChange={(e) => updateEntry(entry.id, 'timeIn', e.target.value)}
-                  className="w-full max-w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
+                  className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white box-border"
                 />
               </div>
               
@@ -91,7 +91,7 @@ export default function WorkHoursCalculator() {
                   type="time"
                   value={entry.timeOut}
                   onChange={(e) => updateEntry(entry.id, 'timeOut', e.target.value)}
-                  className="w-full max-w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white"
+                  className="w-full h-12 px-3 text-sm rounded-xl border-2 border-slate-200 focus:border-teal-500 focus:outline-none transition-colors bg-white box-border"
                 />
               </div>
               

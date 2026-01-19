@@ -127,24 +127,34 @@ export default function Home() {
   };
 
   const handleToggle = (id) => {
+    const wasOpen = openTool === id;
+    const isDifferentTool = openTool && openTool !== id;
+    
     setOpenTool(openTool === id ? null : id);
     
     // Auto-scroll to center the tool when opened
-    if (openTool !== id) { // Only scroll when opening, not closing
+    if (!wasOpen) { // Only scroll when opening a tool
       requestAnimationFrame(() => {
+        // If switching from one tool to another, wait longer for close animation
+        const delay = isDifferentTool ? 350 : 150;
+        
         setTimeout(() => {
           const toolElement = document.querySelector(`[data-tool-id="${id}"]`);
           if (toolElement) {
-            const headerOffset = 80; // Account for any sticky headers
-            const elementPosition = toolElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            const viewportHeight = window.innerHeight;
+            const toolRect = toolElement.getBoundingClientRect();
+            const toolHeight = toolRect.height;
+            
+            // Calculate scroll position to center the tool
+            const absoluteTop = toolRect.top + window.pageYOffset;
+            const centerPosition = absoluteTop - (viewportHeight / 2) + (toolHeight / 2);
             
             window.scrollTo({
-              top: offsetPosition,
+              top: Math.max(0, centerPosition),
               behavior: 'smooth'
             });
           }
-        }, 100); // Small delay to allow accordion to expand first
+        }, delay);
       });
     }
   };
