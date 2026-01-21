@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thetoolzhub.com/sitemap.xml
+Sitemap: https://thetoolifichub.com/sitemap.xml
